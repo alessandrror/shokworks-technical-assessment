@@ -10,8 +10,8 @@
 .title {
   letter-spacing: 0;
   text-align: center;
-  font-size: calc((43 / 16) * 1rem);
-  padding-bottom: calc((81 / 16) * 1rem);
+  font-size: calc((29 / 16) * 1rem);
+  padding-bottom: calc((61 / 16) * 1rem);
 
   & span:first-child {
     font-weight: normal;
@@ -19,5 +19,12 @@
 
   & span:last-child {
     font-weight: bold;
+  }
+}
+
+@media (min-width: 576px) {
+  .title {
+    font-size: calc((43 / 16) * 1rem);
+    padding-bottom: calc((81 / 16) * 1rem);
   }
 }

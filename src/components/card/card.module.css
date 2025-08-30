@@ -29,7 +29,7 @@
 }
 
 .title {
-  font-size: calc((29 / 16) * 1rem);
+  font-size: calc((16 / 16) * 1rem);
   text-align: center;
   letter-spacing: 0;
 
@@ -43,8 +43,18 @@
 }
 
 .description {
-  font-size: calc((15 / 16) * 1rem);
+  font-size: calc((12 / 16) * 1rem);
   text-align: center;
   letter-spacing: 0;
   color: #555555;
+}
+
+@media (min-width: 576px) {
+  .title {
+    font-size: calc((29 / 16) * 1rem);
+  }
+
+  .description {
+    font-size: calc((15 / 16) * 1rem);
+  }
 }
