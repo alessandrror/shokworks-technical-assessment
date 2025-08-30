@@ -1,0 +1,92 @@
+.carouselContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardWrapper {
+  position: absolute;
+  width: 423px;
+  height: 532px;
+  transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+  user-select: none;
+}
+
+.active {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  filter: blur(0px);
+  z-index: 10;
+}
+
+.left1,
+.right1 {
+  transform-origin: center;
+  scale: 1;
+  opacity: 1;
+  filter: blur(0px);
+  z-index: 9;
+}
+
+.left1 {
+  transform: translateX(calc(-100% - 2.25rem));
+}
+
+.right1 {
+  transform: translateX(calc(100% + 2.25rem));
+}
+
+.left2,
+.right2 {
+  opacity: 1;
+  filter: blur(4px);
+  z-index: 8;
+}
+
+.left2 {
+  transform: translateX(calc(-200% - 4.5rem)) scale(0.85);
+}
+
+.right2 {
+  transform: translateX(calc(200% + 4.5rem)) scale(0.85);
+}
+
+/* Todas las demás tarjetas, ocultas */
+.hidden {
+  transform: scale(0.5);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.navigation {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.navigation button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.2s;
+}
+
+.navigation button:hover {
+  background-color: #f0f0f0;
+}
