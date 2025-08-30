@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 2rem 0;
+  overflow-x: hidden;
 }
 
 .carousel {
@@ -17,74 +17,113 @@
 
 .cardWrapper {
   position: absolute;
-  width: 423px;
-  height: 532px;
-  transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease,
+    width 0.5s ease, height 0.5s ease;
   user-select: none;
+  width: 423px;
+  height: 532px
 }
 
 .active {
-  transform: translateX(0) scale(1);
+  transform: translateX(0);
   opacity: 1;
   filter: blur(0px);
-  z-index: 10;
+  z-index: 30;
 }
 
 .left1,
 .right1 {
-  transform-origin: center;
-  scale: 1;
-  opacity: 1;
-  filter: blur(0px);
-  z-index: 9;
+  filter: blur(4px);
+  opacity: 0.8;
+  z-index: 20;
 }
 
 .left1 {
-  transform: translateX(calc(-100% - 2.25rem));
+  transform: translateX(calc(-100% - 2rem));
 }
 
 .right1 {
-  transform: translateX(calc(100% + 2.25rem));
+  transform: translateX(calc(100% + 2rem));
 }
 
 .left2,
 .right2 {
-  opacity: 1;
-  filter: blur(4px);
-  z-index: 8;
+  opacity: 0;
+  z-index: 10;
 }
 
 .left2 {
-  transform: translateX(calc(-200% - 4.5rem)) scale(0.85);
+  transform: translateX(-100%);
 }
 
 .right2 {
-  transform: translateX(calc(200% + 4.5rem)) scale(0.85);
+  transform: translateX(100%);
 }
 
-/* Todas las demás tarjetas, ocultas */
+.left3,
+.right3,
 .hidden {
-  transform: scale(0.5);
   opacity: 0;
   z-index: 1;
   pointer-events: none;
+  transition: none;
+}
+
+@media (min-width: 1024px) {
+  .left1,
+  .right1 {
+    opacity: 1;
+    filter: blur(0px);
+    z-index: 20;
+  }
+
+  .left2,
+  .right2 {
+    opacity: 1;
+    filter: blur(4px);
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .left2 {
+    transform: translateX(calc(-200% - 4rem));
+  }
+
+  .right2 {
+    transform: translateX(calc(200% + 4rem));
+  }
+
+  .left3,
+  .right3 {
+    opacity: 0;
+    filter: blur(4px);
+    z-index: 5;
+  }
+
+  .left3 {
+    transform: translateX(calc(-300% - 6rem));
+  }
+
+  .right3 {
+    transform: translateX(calc(300% + 6rem));
+  }
 }
 
 .navigation {
   margin-top: 1.5rem;
   display: flex;
-  gap: 1rem;
+  gap: 2.25rem;
 }
 
 .navigation button {
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #ffffff;
+  border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
-  font-size: 1.2rem;
   transition: background-color 0.2s;
+  box-shadow: 0px 10px 30px #99999933;
 }
 
 .navigation button:hover {
