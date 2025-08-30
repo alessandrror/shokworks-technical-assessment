@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./carousel.module.css";
 import { useState, Children, ReactNode } from "react";
 
@@ -22,24 +23,23 @@ export default function Carousel({ children }: CarouselProps) {
   };
 
   const getPositionClassName = (index: number): string => {
-    if (index === activeIndex) {
-      return styles.active;
-    }
+    const diff = (index - activeIndex + totalItems) % totalItems;
 
-    const nextIndex = (activeIndex + 1) % totalItems;
-    const prevIndex = (activeIndex - 1 + totalItems) % totalItems;
-    const next2Index = (activeIndex + 2) % totalItems;
-    const prev2Index = (activeIndex - 2 + totalItems) % totalItems;
-
-    switch (index) {
-      case nextIndex:
+    switch (diff) {
+      case 0:
+        return styles.active;
+      case 1:
         return styles.right1;
-      case prevIndex:
+      case totalItems - 1:
         return styles.left1;
-      case next2Index:
+      case 2:
         return styles.right2;
-      case prev2Index:
+      case totalItems - 2:
         return styles.left2;
+      case 3:
+        return styles.right3;
+      case totalItems - 3:
+        return styles.left3;
       default:
         return styles.hidden;
     }
@@ -59,11 +59,11 @@ export default function Carousel({ children }: CarouselProps) {
       </div>
 
       <div className={styles.navigation}>
-        <button type='button' onClick={handlePrev}>
-          ←
+        <button title="Previous" type='button' onClick={handlePrev}>
+          <Image priority width={16} height={16} src='/arrow-left.svg' alt='Previous' />
         </button>
-        <button type='button' onClick={handleNext}>
-          →
+        <button title="Next" type='button' onClick={handleNext}>
+          <Image priority width={16} height={16} src='/arrow-right.svg' alt='Next' />
         </button>
       </div>
     </div>
